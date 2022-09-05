@@ -25,7 +25,7 @@ npm install express
 
 Create package.json
 <pre>
-package.json
+### package.json
 
 {
     "name": "customer-management",
@@ -43,8 +43,8 @@ package.json
         "concurrently": "^4.0.1"
     }
 }
-
-Create gitignore
+</pre>
+### Create gitignore
 <pre>
 .gitignore
 
