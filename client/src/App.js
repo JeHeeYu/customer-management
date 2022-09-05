@@ -18,42 +18,38 @@ const styles = theme => ({
     table: {
         minWidth: 1080,
     }
-})
-
-const customers = [
-    {
-    'id': 1,
-    'image': 'https://placeimg.com/64/64/any/1',
-    'name': '홍길동1',
-    'birthday': '9609291',
-    'gender': '남자1',
-    'job': '대학생1'
-},
-{
-    'id': 2,
-    'image': 'https://placeimg.com/64/64/any/2',
-    'name': '홍길동2',
-    'birthday': '9609292',
-    'gender': '남자2',
-    'job': '대학생2'
-},
-{
-    'id': 3,
-    'image': 'https://placeimg.com/64/64/any/3',
-    'name': '홍길동3',
-    'birthday': '9609293',
-    'gender': '남자3',
-    'job': '대학생3'
-}
-]
+});
 
 class App extends Component {
+
+    // props는 변경될 수 없는 데이터에 사용하므로
+    // 변경될 수 있는 변수 선언
+    state = {
+        customers: ""
+    }
+
+    // api에 접근해서 데이터를 받아오는 부분
+    // 모든 컴포넌트가 마운트 되었을 때 실행
+    componentDidMount() {
+        this.callApi()
+        .then(res => this.setState({customers: res}))
+        .catch(err => console.log(err));
+    }
+
+    // 접속하고자 하는 api 주소에서 body parsing 후 body return
+    callApi = async () => {
+        const response = await fetch('/api/customers');
+        const body = await response.json();
+
+        return body;
+    }
+
     render() {
         const { classes } = this.props;
         return (
             // Customer 컴포넌트에 데이터 전송
-            <Paper className={classes}>
-                <Table className={classes}>
+            <Paper >
+                <Table >
                     <TableHead>
                         <TableRow>
                             <TableCell>번호</TableCell>
@@ -66,7 +62,7 @@ class App extends Component {
                     </TableHead>
                     <TableBody>
                         {
-                            customers.map(c => {
+                            this.state.customers ? this.state.customers.map(c => {
                                 return (
                                     <Customer
                                         key={c.id}
@@ -78,7 +74,7 @@ class App extends Component {
                                         job={c.job}
                                     />
                                 )
-                            })
+                            }) : ""
                         }
                     </TableBody>
                 </Table>

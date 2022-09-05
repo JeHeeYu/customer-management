@@ -15,15 +15,20 @@ create-react-app customer-management
 // material ui download
 npm install @mui/material @emotion/react @emotion/styled
 
+// /client/package.json 내 내용 추가
+"proxy": "http://localhost:5000/"
+
 client 폴더로 이동
 </pre>
 ### Server
 <pre>
 npm install -g nodemon
 npm install express
+
+yarn dev
 </pre>
 
-Create package.json
+### Create package.json
 <pre>
 package.json
 
@@ -31,7 +36,7 @@ package.json
     "name": "customer-management",
     "version": "1.0.0",
     "scripts": {
-        "client": "cd client && yarn_start",
+        "client": "cd client && yarn start",
         "server": "nodemon server.js",
         "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
     },
@@ -43,8 +48,8 @@ package.json
         "concurrently": "^4.0.1"
     }
 }
-
-Create gitignore
+</pre>
+### Create gitignore
 <pre>
 .gitignore
 
