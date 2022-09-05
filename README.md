@@ -23,9 +23,9 @@ npm install -g nodemon
 npm install express
 </pre>
 
-Create package.json
+### Create package.json
 <pre>
-### package.json
+package.json
 
 {
     "name": "customer-management",
