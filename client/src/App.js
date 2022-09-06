@@ -27,11 +27,22 @@ const styles = theme => ({
 
 class App extends Component {
 
-    // props는 변경될 수 없는 데이터에 사용하므로
-    // 변경될 수 있는 변수 선언
-    state = {
-        customers: "",
-        completed: 0
+    constructor(props) {
+        super(props);
+        this.state = {
+            customers: '',
+            completed: 0
+        }
+    }
+
+    stateRefresh = () => {
+        this.setState({
+            customers: '',
+            completed: 0
+        });
+        this.callApi()
+        .then(res => this.setState({customers: res}))
+        .catch(err => console.log(err));
     }
 
     // api에 접근해서 데이터를 받아오는 부분
@@ -71,6 +82,7 @@ class App extends Component {
                                 <TableCell>생년월일</TableCell>
                                 <TableCell>성별</TableCell>
                                 <TableCell>직업</TableCell>
+                                <TableCell>설정</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -78,6 +90,7 @@ class App extends Component {
                                 this.state.customers ? this.state.customers.map(c => {
                                     return (
                                         <Customer
+                                            stateRefresh={this.stateRefresh}
                                             key={c.id}
                                             id={c.id}
                                             image={c.image}
@@ -97,7 +110,7 @@ class App extends Component {
                         </TableBody>
                     </Table>
                 </Paper>
-                <CustomerAdd/>
+                <CustomerAdd stateRefresh={this.stateRefresh} />
             </div>
         );
     }
