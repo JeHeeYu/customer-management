@@ -1,23 +1,19 @@
 {
-    "name": "customer-management",
-    "version": "1.0.0",
-    "scripts": {
-        "client": "cd client && yarn start",
-        "server": "nodemon server.js",
-        "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
-    },
-    "dependencies": {
-        "@emotion/react": "^11.10.4",
-        "@emotion/styled": "^11.10.4",
-        "@mui/icons-material": "^5.10.3",
-        "@mui/material": "^5.10.3",
-        "@mui/styles": "^5.10.3",
-        "body-parser": "^1.18.3",
-        "express": "^4.18.1",
-        "multer": "^1.4.5-lts.1",
-        "mysql": "^2.18.1"
-    },
-    "devDependencies": {
-        "concurrently": "^4.0.1"
-    }
+  "name": "management",
+  "version": "1.0.0",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "dependencies": {
+    "@material-ui/icons": "^3.0.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "multer": "^1.4.1",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1"
+  }
 }

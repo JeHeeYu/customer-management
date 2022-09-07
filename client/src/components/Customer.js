@@ -1,10 +1,9 @@
 import React from 'react';
-import TableRow from '@mui/material/TableRow';
-import TableCell from '@mui/material/TableCell';
-import CustomerDelete from './CustomerDelete';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import CustomerDelete from './CustomerDelete'
 
 class Customer extends React.Component {
-    // Customer 의 내용을 그려주는 부분
     render() {
         return (
             <TableRow>
@@ -19,6 +18,5 @@ class Customer extends React.Component {
         )
     }
 }
-
 
 export default Customer;
